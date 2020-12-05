@@ -128,3 +128,153 @@ def game_hash
 end
 
 # Write code here
+
+
+
+
+
+def num_points_scored (name)
+
+  game_hash.each do |key, value|
+    value[:players].each do |player| 
+      if name == player[:player_name] 
+        return player[:points]    
+      end 
+    end
+  end
+end 
+
+
+def shoe_size (name)
+
+  game_hash.each do |key, value|
+    value[:players].each do |player| 
+      if name == player[:player_name] 
+        return player[:shoe]    
+      end 
+    end
+  end
+end 
+
+
+
+def team_colors (team)
+
+  game_hash.each do |key, value|
+      if team == value[:team_name]
+        return value[:colors]    
+      end 
+  end
+end 
+
+def team_names 
+arr = []
+  game_hash.each do | key, value|
+    value[:players].each do | key,value|
+      [:number]
+    end 
+arr << value[:team_name] 
+  end
+   arr
+
+end 
+
+
+def player_numbers (team)
+  
+arr = []
+  game_hash.each do | key, value|
+    value[:players].each do|key2, value2| 
+    if team  == value[:team_name]
+       arr << key2[:number]
+    end 
+    end 
+  end
+   arr
+end 
+
+
+def player_stats (name)
+  
+  game_hash.each do | key, value|
+    value[:players].each do |key2|
+        if  key2[:player_name] == name
+          return key2
+        end 
+      end 
+    end 
+end 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def  big_shoe_rebounds ()
+  
+  
+  
+  biggest_shoe = 0
+  rebounds_scored = 0
+  game_hash.each do |home_away, keys_list|
+    keys_list[:players].each do |player|
+      if player[:shoe] > biggest_shoe
+        biggest_shoe = player[:shoe]
+        rebounds_scored = player[:rebounds]
+      end
+    end
+  end
+  return rebounds_scored
+end
+
+    # game_hash.each do | key, value|
+    #   value[:players].each do |key2|
+    #       if biggest == nil
+    #         biggest = key2[:shoe]
+
+    #           if key2[:shoe] >= biggest
+
+    #             biggest = key2[:shoe]
+
+    #           end 
+    #       end 
+    #                         rebound = key2[:rebounds]
+
+      
+ 
+
+
+
+
+
+
+
+
+
+
+
