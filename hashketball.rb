@@ -1,4 +1,4 @@
-# Write your code below game_hash
+require 'pry'
 
 def game_hash
   {
@@ -127,4 +127,94 @@ def game_hash
   }
 end
 
-# Write code here
+def num_points_scored (player_name)
+  game_hash.each do |team, team_data|
+    team_data[:players].each do |player|
+      if player[:player_name] == player_name
+        return player[:points]
+      end
+    end
+  end
+end
+
+def shoe_size (player_name)
+  game_hash.each do |team, team_data|
+    team_data[:players].each do |player|
+      if player[:player_name] == player_name
+        return player[:shoe]
+      end
+    end
+  end
+end
+
+def team_colors(team_name)
+  game_hash.each do |hora,stats|
+    if stats[:team_name] == team_name
+      return stats[:colors]
+    end
+  end
+end
+
+def team_names
+  team_array = []
+  game_hash.each do |hora, stats|
+    team_array.push(stats[:team_name])
+  end
+  team_array
+end
+
+def player_numbers(team_name)
+  jersey_number_array = []
+  game_hash.each do |hora,stats|
+    if stats[:team_name] == team_name
+      stats[:players].each do |player|
+        jersey_number_array.push(player[:number])
+      end  
+    end
+  end
+  return jersey_number_array
+end
+
+def player_stats(player_name)
+  game_hash.each do |hora, stats|
+    stats[:players].each do |player|
+      if player[:player_name] == player_name
+        return player
+      end
+    end
+  end
+end
+
+def big_shoe_rebounds
+  big_shoe_size = 0
+  big_shoe_player = ""
+  game_hash.each do |hora, stats|
+    stats[:players].each do |player|
+      if player[:shoe] > big_shoe_size
+        big_shoe_size = player[:shoe]
+        big_shoe_player = player[:player_name]
+      end
+    end
+  end
+  game_hash.each do |hora, stats|
+    stats[:players].each do |player|
+      if player[:player_name] == big_shoe_player
+        return player[:rebounds]
+      end
+    end
+  end
+end
+
+def most_points_scored
+  most_points = 0
+  big_shooter_player = ""
+  game_hash.each do |hora, stats|
+    stats[:players].each do |player|
+      if player[:points] > most_points
+        most_points= player[:points]
+        big_shooter_player = player[:player_name]
+      end
+    end
+  end
+  return big_shooter_player
+end
